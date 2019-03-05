@@ -12,8 +12,9 @@ categories$;
   constructor(categoryService:CategoryService,private productService:ProductService) { 
     this.categories$=categoryService.getCategories(); 
   }
-  save(product){
+  save(product){console.log(product);
     this.productService.create(product);
+    
   }
 
   ngOnInit() {
