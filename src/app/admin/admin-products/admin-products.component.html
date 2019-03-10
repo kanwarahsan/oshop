@@ -1,5 +1,26 @@
 <div class="container mt-5">
-<a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+<a routerLink="/admin/products/new" class="btn btn-primary">New Product</a><br>
+<p>
+    <input 
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search...">
+</p>
+
+
+<!-- <div>
+    <input type="text" (keyup)="search()" [(ngModel)]="searchValue">
+    <div class="search-results">
+      <div class="search-result" *ngFor="let result of results | async">
+        {{ result.title }}
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
 </div>
 
 <table class="table">
@@ -12,11 +33,11 @@
     </thead>
     <tbody>
         
-            <tr *ngFor="let p of products$ |async">
+            <tr *ngFor="let p of filteredProducts">
                 <td>{{p.title}}</td>
                 <td>{{p.price}}</td>
                 <td>
-                    <a [routerLink]="['/admin/products/',p.$key]">Edit</a>
+                    <a [routerLink]="['/admin/products/',p.key]">Edit</a>
                 </td>
             </tr>
         
